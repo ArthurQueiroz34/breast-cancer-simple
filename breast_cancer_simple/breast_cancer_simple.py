@@ -18,3 +18,11 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy',
                    metrics = ['binary_accuracy'])
 classifier.fit(forecasters_training, division_training,
                batch_size = 10, epochs = 100)
+
+forecasters = classifier.predict(forecasters_test)
+forecasters = (forecasters > 0.5)
+from sklearn.metrics import confusion_matrix, accuracy_score
+accuracy = accuracy_score(division_test, forecasters)
+matrix = confusion_matrix(division_test, forecasters)
+
+result = classifier.evaluate(forecasters_test, division_test)
