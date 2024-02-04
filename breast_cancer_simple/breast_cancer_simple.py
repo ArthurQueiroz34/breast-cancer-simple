@@ -13,3 +13,8 @@ classifier = Sequential()
 classifier.add(Dense(units = 16, activation = 'relu', 
                      kernel_initializer= 'random_uniform', input_dim = 30))
 classifier.add(Dense(units = 1, activation = 'sigmoid'))
+
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', 
+                   metrics = ['binary_accuracy'])
+classifier.fit(forecasters_training, division_training,
+               batch_size = 10, epochs = 100)
