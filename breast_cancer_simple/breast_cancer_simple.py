@@ -25,6 +25,13 @@ classifier.compile(optimizer = optimizer, loss = 'binary_crossentropy',
 classifier.fit(forecasters_training, division_training,
                batch_size = 10, epochs = 100)
 
+
+weights0 = classifier.layers[0].get_weights()
+print(weights0)
+print(len(weights0))
+weights1 = classifier.layers[1].get_weights()
+weights2 = classifier.layers[2].get_weights()
+
 forecasters = classifier.predict(forecasters_test)
 forecasters = (forecasters > 0.5)
 from sklearn.metrics import confusion_matrix, accuracy_score
